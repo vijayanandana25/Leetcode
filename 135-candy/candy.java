@@ -5,18 +5,21 @@ class Solution {
         int[] r = new int[n];
         Arrays.fill(l,1);
         Arrays.fill(r,1);
-
+        //traverse from front to back
         for(int i=0;i<n-1;i++){
             if(ratings[i]<ratings[i+1]){
                 l[i+1] = l[i]+1;
             }
         }
 
+        //traverse from back to front
         for(int i=n-2;i>=0;i--){
             if(ratings[i]>ratings[i+1]){
                 r[i]=r[i+1]+1;
             }
         }
+
+        //compare each element in both array and add the max ele to the sum
         int sum=0;
         for(int i=0;i<n;i++){
             sum += Math.max(r[i],l[i]);
